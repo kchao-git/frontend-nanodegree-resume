@@ -77,12 +77,18 @@ if(bio.skills.length > 0) {
 }
 
 //Add Work Experience
-work.jobs.forEach(function(job) {
-	$('#workExperience').append(HTMLworkStart);
-	var formattedWork = HTMLworkEmployer.replace('%data%', job.employer) +
-		HTMLworkTitle.replace('%data%', job.position);
-	$('.work-entry:last').append(formattedWork);
-});
+
+function displayWork() {
+	work.jobs.forEach(function(job) {
+		$('#workExperience').append(HTMLworkStart);
+		var formattedWork = HTMLworkEmployer.replace('%data%', job.employer) +
+			HTMLworkTitle.replace('%data%', job.position) +
+			HTMLworkDates.replace('%data%', job.years) +
+			HTMLworkLocation.replace('%data%', job.location) +
+			HTMLworkDescription.replace('%data%', job.description);
+		$('.work-entry:last').append(formattedWork);
+	});
+}
 
 /*
 //Name and Role Header

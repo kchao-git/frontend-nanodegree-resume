@@ -68,13 +68,12 @@ var education = {
 if(bio.skills.length > 0) {
 	$('#header').append(HTMLskillsStart);
 
-	var formattedSkills = '<ul>';
+	var formattedSkills = '';
 	bio.skills.forEach(function(skill) {
 		formattedSkills += HTMLskills.replace('%data%', skill);
 	});
-	formattedSkills += '</ul>';
 
-	$('#header').append(formattedSkills);
+	$('#skills').append(formattedSkills);
 }
 
 //Add Work Experience

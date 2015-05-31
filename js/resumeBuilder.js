@@ -112,6 +112,8 @@ displayWork();
 //Add international button
 $('#main').append(internationalizeButton);
 
+$('#mapDiv').append(googleMap);
+
 function displayWork() {
 	work.jobs.forEach(function(job) {
 		$('#workExperience').append(HTMLworkStart);

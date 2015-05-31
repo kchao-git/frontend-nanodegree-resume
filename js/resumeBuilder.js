@@ -39,13 +39,13 @@ var work = {
 	]
 };
 
-var project = {
+var projects = {
 	"projects": [
 		{
-			"title": "",
-			"dates": "",
-			"description": "",
-			"images": []
+			"title": "Sample",
+			"dates": "2015",
+			"description": "Sample Description",
+			"images": ['images/197x148.gif','images/197x148.gif']
 		}
 	]
 };
@@ -63,6 +63,31 @@ var education = {
 	]
 };
 
+//Create Project display function
+projects.display = function () {
+	for (var project in projects.projects) {
+		$('#projects').append(HTMLprojectStart);
+		
+		var formattedTitle = HTMLprojectTitle.replace('%data%', projects.projects[project].title);
+		$('.project-entry:last').append(formattedTitle);
+
+		var formattedDates = HTMLprojectDates.replace('%data%', projects.projects[project].dates);
+		$('.project-entry:last').append(formattedDates);
+
+		var formattedDescription = HTMLprojectDescription.replace('%data%', projects.projects[project].description);
+		$('.project-entry:last').append(formattedDescription);
+
+		if (projects.projects[project].images.length > 0) {
+			for (var image in projects.projects[project].images) {
+				var formattedImage = HTMLprojectImage.replace('%data%', projects.projects[project].images[image]);
+				$('.project-entry:last').append(formattedImage);
+			}
+		}
+	}
+};
+
+projects.display();
+
 //Add Name and Role
 var formattedName = HTMLheaderName.replace('%data%', bio.name);
 var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
@@ -70,7 +95,7 @@ $('#header').prepend(formattedRole);
 $('#header').prepend(formattedName);
 
 //Add Skills to Header
-if(bio.skills.length > 0) {
+if (bio.skills.length > 0) {
 	$('#header').append(HTMLskillsStart);
 
 	var formattedSkills = '';

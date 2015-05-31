@@ -64,6 +64,20 @@ var education = {
 };
 
 
+//Add Skills to Header
+if(bio.skills.length > 0) {
+	$('#header').append(HTMLskillsStart);
+
+	var formattedSkills = '<ul>';
+	bio.skills.forEach(function(skill) {
+		formattedSkills += HTMLskills.replace('%data%', skill);
+	});
+	formattedSkills += '</ul>';
+
+	$('#header').append(formattedSkills);
+}
+
+
 /*
 //Name and Role Header
 var formattedName = HTMLheaderName.replace('%data%', bio.name);

@@ -14,19 +14,57 @@ var bio = {
 
 //Work Experience Template
 var work = {
-	position: 'Job Position',
-	employer: 'Company Name',
-	years: '2015',
-	city: 'City Name'
+	"jobs": [
+		{
+			"employer": "NIS America, Inc.",
+			"position": "Web Developer",
+			"years": "2015 - Present",
+			"location": "Santa Ana, CA",
+			"description": "Write code to support various website and web applications."
+		},
+		{
+			"employer": "NIS America, Inc.",
+			"position": "Online Store Coordinator",
+			"years": "2011 - 2015",
+			"location": "Santa Ana, CA",
+			"description": "Administrate various web applications and write scripts to support business workflows."
+		},
+		{
+			"employer": "Say Design",
+			"position": "Flash/Actionscript Developer",
+			"years": "2010 - 2011",
+			"location": "Irvine, CA",
+			"description": "Develop Flash-based games and applications for various clients."
+		}
+	]
+};
+
+var project = {
+	"projects": [
+		{
+			"title": "",
+			"dates": "",
+			"description": "",
+			"images": []
+		}
+	]
 };
 
 //Education History Template
 var education = {
-	name: 'School Name',
-	years: '2015',
-	city: 'City Name'
+	"schools": [
+		{
+			"name": "DeVry University",
+			"degree": "BS",
+			"years": "2006 - 2009",
+			"location": "Long Beach, CA",
+			"major": "Game and Simulation Programming"
+		}
+	]
 };
 
+
+/*
 //Name and Role Header
 var formattedName = HTMLheaderName.replace('%data%', bio.name);
 var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
@@ -78,3 +116,4 @@ $('#header').prepend(formattedName);
 
 $('#workExperience').append(formattedWork);
 $('#education').append(formattedEducation);
+*/

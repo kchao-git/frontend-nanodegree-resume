@@ -77,6 +77,13 @@ if(bio.skills.length > 0) {
 	$('#header').append(formattedSkills);
 }
 
+//Add Work Experience
+work.jobs.forEach(function(job) {
+	$('#workExperience').append(HTMLworkStart);
+	var formattedWork = HTMLworkEmployer.replace('%data%', job.employer) +
+		HTMLworkTitle.replace('%data%', job.position);
+	$('.work-entry:last').append(formattedWork);
+});
 
 /*
 //Name and Role Header

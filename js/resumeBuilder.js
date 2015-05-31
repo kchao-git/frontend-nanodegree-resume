@@ -63,6 +63,11 @@ var education = {
 	]
 };
 
+//Add Name and Role
+var formattedName = HTMLheaderName.replace('%data%', bio.name);
+var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
+$('#header').prepend(formattedRole);
+$('#header').prepend(formattedName);
 
 //Add Skills to Header
 if(bio.skills.length > 0) {
@@ -77,6 +82,10 @@ if(bio.skills.length > 0) {
 }
 
 //Add Work Experience
+displayWork();
+
+//Add international button
+$('#main').append(internationalizeButton);
 
 function displayWork() {
 	work.jobs.forEach(function(job) {
@@ -88,6 +97,15 @@ function displayWork() {
 			HTMLworkDescription.replace('%data%', job.description);
 		$('.work-entry:last').append(formattedWork);
 	});
+}
+
+function inName(name) {
+	var names = name.trim().split(' ');
+	console.log(names);
+	var firstName = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
+	var lastName = names[1].toUpperCase();
+
+	return (firstName + ' ' + lastName);
 }
 
 /*

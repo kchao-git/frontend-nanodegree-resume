@@ -26,27 +26,27 @@ bio.display = function() {
 	$('#header').prepend(formattedName);
 
 	//Contact Info - Mobile
-	var formattedMobile = HTMLmobile.replace('%data%', bio.mobile);
+	var formattedMobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
 	$('#topContacts').append(formattedMobile);
 	$('#footerContacts').append(formattedMobile);
 
 	//Email
-	var formattedEmail = HTMLemail.replace('%data%', bio.email);
+	var formattedEmail = HTMLemail.replace('%data%', bio.contacts.email);
 	$('#topContacts').append(formattedEmail);
 	$('#footerContacts').append(formattedEmail);
 
 	//GitHub
-	var formattedGitHub = HTMLgithub.replace('%data%', bio.github);
+	var formattedGitHub = HTMLgithub.replace('%data%', bio.contacts.github);
 	$('#topContacts').append(formattedGitHub);
 	$('#footerContacts').append(formattedGitHub);
 
 	//Twitter
-	var formattedTwitter = HTMLtwitter.replace('%data%', bio.twitter);
+	var formattedTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter);
 	$('#topContacts').append(formattedTwitter);
 	$('#footerContacts').append(formattedTwitter);
 
 	//Location
-	var formattedLocation = HTMLlocation.replace('%data%', bio.location);
+	var formattedLocation = HTMLlocation.replace('%data%', bio.contacts.location);
 	$('#topContacts').append(formattedLocation);
 	$('#footerContacts').append(formattedLocation);
 

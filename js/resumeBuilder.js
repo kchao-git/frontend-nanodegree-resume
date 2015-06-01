@@ -1,16 +1,75 @@
 //Bio Info
 var bio = {
-	name: 'Kenny Chao',
-	role: 'Web Developer',
-	contacts: {
-		email: 'kchao394@gmail.com',
-		github: 'kchao-git',
-		location: 'Santa Ana'
+	"name": "Kenny Chao",
+	"role": "Web Developer",
+	"contacts": {
+		"mobile": "(714) 555-5555",
+		"email": "kchao394@gmail.com",
+		"github": "kchao-git",
+		"twitter": "@sometwitter",
+		"location": "Santa Ana, CA"
 	},
-	photo: 'images/fry.jpg',
-	message: 'Hello there!',
-	skills: ['HTML', 'CSS', 'Javascript']
+	"welcomeMessage": "Hello there!",
+	"skills": ["HTML", "CSS", "Javascript"],
+	"biopic": "images/fry.jpg",
 };
+
+//Define display function for bio object
+bio.display = function() {
+	//Format and Add all bio info
+	//Role
+	var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
+	$('#header').prepend(formattedRole);
+
+	//Name
+	var formattedName = HTMLheaderName.replace('%data%', bio.name);
+	$('#header').prepend(formattedName);
+
+	//Contact Info - Mobile
+	var formattedMobile = HTMLmobile.replace('%data%', bio.mobile);
+	$('#topContacts').append(formattedMobile);
+	$('#footerContacts').append(formattedMobile);
+
+	//Email
+	var formattedEmail = HTMLemail.replace('%data%', bio.email);
+	$('#topContacts').append(formattedEmail);
+	$('#footerContacts').append(formattedEmail);
+
+	//GitHub
+	var formattedGitHub = HTMLgithub.replace('%data%', bio.github);
+	$('#topContacts').append(formattedGitHub);
+	$('#footerContacts').append(formattedGitHub);
+
+	//Twitter
+	var formattedTwitter = HTMLtwitter.replace('%data%', bio.twitter);
+	$('#topContacts').append(formattedTwitter);
+	$('#footerContacts').append(formattedTwitter);
+
+	//Location
+	var formattedLocation = HTMLlocation.replace('%data%', bio.location);
+	$('#topContacts').append(formattedLocation);
+	$('#footerContacts').append(formattedLocation);
+
+	//Bio Pic
+	var formattedBioPic = HTMLbioPic.replace('%data%', bio.biopic);
+	$('#header').append(formattedBioPic);
+
+	//Welcome Message
+	var formattedWelcome = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
+	$('#header').append(formattedWelcome);
+
+	//Skills
+	if (bio.skills.length > 0) {
+		$('#header').append(HTMLskillsStart);
+
+		var formattedSkills = '';
+		bio.skills.forEach(function(skill) {
+			formattedSkills += HTMLskills.replace('%data%', skill);
+		});
+
+		$('#skills').append(formattedSkills);
+	}
+}
 
 //Work Experience Template
 var work = {
@@ -86,25 +145,11 @@ projects.display = function () {
 	}
 };
 
+//Display all info
+bio.display();
 projects.display();
 
-//Add Name and Role
-var formattedName = HTMLheaderName.replace('%data%', bio.name);
-var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
-$('#header').prepend(formattedRole);
-$('#header').prepend(formattedName);
 
-//Add Skills to Header
-if (bio.skills.length > 0) {
-	$('#header').append(HTMLskillsStart);
-
-	var formattedSkills = '';
-	bio.skills.forEach(function(skill) {
-		formattedSkills += HTMLskills.replace('%data%', skill);
-	});
-
-	$('#skills').append(formattedSkills);
-}
 
 //Add Work Experience
 displayWork();

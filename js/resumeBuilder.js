@@ -9,13 +9,16 @@ var bio = {
 		"twitter": "@sometwitter",
 		"location": "Santa Ana, CA"
 	},
-	"welcomeMessage": "Hello there!",
+	"welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu bibendum nibh. Nam vitae leo tellus. Phasellus facilisis rhoncus ipsum, sit amet gravida ante suscipit id.",
 	"skills": [
 		"HTML",
 		"CSS",
-		"Javascript"
+		"Javascript",
+		"Actionscript 3",
+		"Flash",
+		"Photoshop"
 	],
-	"biopic": "images/fry.jpg"
+	"biopic": "images/profile.jpg"
 };
 
 //Define bio object's display function
@@ -132,22 +135,23 @@ work.display = function() {
 var projects = {
 	"projects": [
 		{
-			"title": "Sample",
+			"title": "Portfolio Site",
 			"dates": "2015",
-			"description": "Sample Description",
+			"description": "Simple website utilizing the bootstrap framework and responsive design.",
 			"images": [
-				"images/197x148.gif",
-				"images/197x148.gif"
-			]
+				"images/portfolio-project.jpg"
+			],
+			"url": "https://github.com/kchao-git/build-a-portfolio-site.git"
 		},
 		{
-			"title": "Sample",
+			"title": "Future Project",
 			"dates": "2015",
-			"description": "Sample Description",
+			"description": "Coming Soon",
 			"images": [
 				"images/197x148.gif",
 				"images/197x148.gif"
-			]
+			],
+			"url": "#"
 		}
 	]
 };
@@ -155,23 +159,32 @@ var projects = {
 //Define project object's display function
 projects.display = function () {
 	projects.projects.forEach(function(project) {
+		//Add starter HTML for each project
 		$('#projects').append(HTMLprojectStart);
 		
+		//Add Project info
+		//Title
 		var formattedTitle = HTMLprojectTitle.replace('%data%', project.title);
 		$('.project-entry:last').append(formattedTitle);
 
+		//Dates
 		var formattedDates = HTMLprojectDates.replace('%data%', project.dates);
 		$('.project-entry:last').append(formattedDates);
 
+		//Description
 		var formattedDescription = HTMLprojectDescription.replace('%data%', project.description);
 		$('.project-entry:last').append(formattedDescription);
 
+		//Add images if there are any listed
 		if (project.images.length > 0) {
 			project.images.forEach(function(image) {
 				var formattedImage = HTMLprojectImage.replace('%data%', image);
 				$('.project-entry:last').append(formattedImage);
 			});
 		}
+
+		//Insert url to link in title
+		$('.project-entry:last').find('a').attr('href', project.url);
 	});
 };
 
@@ -187,20 +200,27 @@ var education = {
 			],
 			"dates": 2009,
 			"url": "http://www.devry.edu"
-		},
-		{
-			"name": "Some other school",
-			"location": "Somewhere, CA",
-			"degree": "BS",
-			"majors": [
-				"CS",
-				"Some other major"
-			],
-			"dates": 2015,
-			"url": "http://www.google.com"
 		}
 	],
 	"onlineCourses": [
+		{
+			"title": "Intro to HTML and CSS",
+			"school": "Udacity",
+			"date": 2015,
+			"url": "https://www.udacity.com/course/intro-to-html-and-css--ud304"
+		},
+		{
+			"title": "Responsive Web Design Fundamentals",
+			"school": "Udacity",
+			"date": 2015,
+			"url": "https://www.udacity.com/course/responsive-web-design-fundamentals--ud893"
+		},
+		{
+			"title": "How to Use Git and GitHub",
+			"school": "Udacity",
+			"date": 2015,
+			"url": "https://www.udacity.com/course/how-to-use-git-and-github--ud775"
+		},
 		{
 			"title": "Javascript Basics",
 			"school": "Udacity",

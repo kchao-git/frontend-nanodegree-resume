@@ -14,7 +14,7 @@ var bio = {
 	"biopic": "images/fry.jpg",
 };
 
-//Define display function for bio object
+//Define bio object's display function
 bio.display = function() {
 	//Format and Add all bio info
 	//Role
@@ -69,37 +69,70 @@ bio.display = function() {
 
 		$('#skills').append(formattedSkills);
 	}
-}
+};
 
-//Work Experience Template
+//Work Experience Info
 var work = {
 	"jobs": [
 		{
 			"employer": "NIS America, Inc.",
-			"position": "Web Developer",
-			"years": "2015 - Present",
+			"title": "Web Developer",
 			"location": "Santa Ana, CA",
+			"dates": "2015 - Present",
 			"description": "Write code to support various website and web applications."
 		},
 		{
 			"employer": "NIS America, Inc.",
-			"position": "Online Store Coordinator",
-			"years": "2011 - 2015",
+			"title": "Online Store Coordinator",
 			"location": "Santa Ana, CA",
+			"dates": "2011 - 2015",
 			"description": "Administrate various web applications and write scripts to support business workflows."
 		},
 		{
 			"employer": "Say Design",
-			"position": "Flash/Actionscript Developer",
-			"years": "2010 - 2011",
+			"title": "Flash/Actionscript Developer",
 			"location": "Irvine, CA",
+			"dates": "2010 - 2011",
 			"description": "Develop Flash-based games and applications for various clients."
 		}
 	]
 };
 
+//Define work object's display function
+work.display = function() {
+	work.jobs.forEach(function(job) {
+		//Add the starter work HTML code
+		$('#workExperience').append(HTMLworkStart);
+
+		//Format and add work info
+		//Employer and Title
+		var formattedEmployer = HTMLworkEmployer.replace('%data%', job.employer);
+		var formattedTitle = HTMLworkTitle.replace('%data%', job.title);
+		$('.work-entry:last').append(formattedEmployer + formattedTitle);
+
+		//Dates
+		var formattedDates =	HTMLworkDates.replace('%data%', job.dates);
+		$('.work-entry:last').append(formattedDates);
+
+		//Location
+		var formattedLocation =	HTMLworkLocation.replace('%data%', job.location);
+		$('.work-entry:last').append(formattedLocation);
+
+		//Description
+		var formattedDescription =HTMLworkDescription.replace('%data%', job.description);
+		$('.work-entry:last').append(formattedDescription);
+	});
+};
+
+//Project Info
 var projects = {
 	"projects": [
+		{
+			"title": "Sample",
+			"dates": "2015",
+			"description": "Sample Description",
+			"images": ['images/197x148.gif','images/197x148.gif']
+		},
 		{
 			"title": "Sample",
 			"dates": "2015",
@@ -109,127 +142,129 @@ var projects = {
 	]
 };
 
-//Education History Template
+//Define project object's display function
+projects.display = function () {
+	projects.projects.forEach(function(project) {
+		$('#projects').append(HTMLprojectStart);
+		
+		var formattedTitle = HTMLprojectTitle.replace('%data%', project.title);
+		$('.project-entry:last').append(formattedTitle);
+
+		var formattedDates = HTMLprojectDates.replace('%data%', project.dates);
+		$('.project-entry:last').append(formattedDates);
+
+		var formattedDescription = HTMLprojectDescription.replace('%data%', project.description);
+		$('.project-entry:last').append(formattedDescription);
+
+		if (project.images.length > 0) {
+			project.images.forEach(function(image) {
+				var formattedImage = HTMLprojectImage.replace('%data%', image);
+				$('.project-entry:last').append(formattedImage);
+			});
+		}
+	});
+};
+
+//Education History
 var education = {
 	"schools": [
 		{
 			"name": "DeVry University",
-			"degree": "BS",
-			"years": "2006 - 2009",
 			"location": "Long Beach, CA",
-			"major": "Game and Simulation Programming"
+			"degree": "BS",
+			"majors": ["Game and Simulation Programming"],
+			"dates": 2009,
+			"url": "http://www.devry.edu"
+		},
+		{
+			"name": "Some other school",
+			"location": "Somewhere, CA",
+			"degree": "BS",
+			"majors": ["CS", "Some other major"],
+			"dates": 2015,
+			"url": "http://www.google.com"
+		}
+	],
+	"onlineCourses": [
+		{
+			"title": "Javascript Basics",
+			"school": "Udacity",
+			"date": 2015,
+			"url": "https://www.udacity.com/course/javascript-basics--ud804"
+		},
+		{
+			"title": "Intro to jQuery",
+			"school": "Udacity",
+			"date": 2015,
+			"url": "https://www.udacity.com/course/intro-to-jquery--ud245"
 		}
 	]
 };
 
-//Create Project display function
-projects.display = function () {
-	for (var project in projects.projects) {
-		$('#projects').append(HTMLprojectStart);
+//Define education object's display function
+education.display = function() {
+	
+	//Add each school info
+	education.schools.forEach(function(school) {
+		//Starter HTML code for schools
+		$('#education').append(HTMLschoolStart);
+
+		//Add school info
+		//School Name and Degree
+		var formattedName = HTMLschoolName.replace('%data%', school.name);
+		var formattedDegree = HTMLschoolDegree.replace('%data%', school.degree);
+		$('.education-entry:last').append(formattedName + formattedDegree);
+
+		//School Url
+		$('.education-entry:last').find('a').attr('href', school.url);
 		
-		var formattedTitle = HTMLprojectTitle.replace('%data%', projects.projects[project].title);
-		$('.project-entry:last').append(formattedTitle);
+		//Graduation Date
+		var formattedDate = HTMLschoolDates.replace('%data%', school.dates);
+		$('.education-entry:last').append(formattedDate);
 
-		var formattedDates = HTMLprojectDates.replace('%data%', projects.projects[project].dates);
-		$('.project-entry:last').append(formattedDates);
+		//Location
+		var formattedLocation = HTMLschoolLocation.replace('%data%', school.location);
+		$('.education-entry:last').append(formattedLocation);
 
-		var formattedDescription = HTMLprojectDescription.replace('%data%', projects.projects[project].description);
-		$('.project-entry:last').append(formattedDescription);
-
-		if (projects.projects[project].images.length > 0) {
-			for (var image in projects.projects[project].images) {
-				var formattedImage = HTMLprojectImage.replace('%data%', projects.projects[project].images[image]);
-				$('.project-entry:last').append(formattedImage);
-			}
-		}
+		//Major
+		var formattedMajor = HTMLschoolMajor.replace('%data%', school.majors);
+		$('.education-entry:last').append(formattedMajor);
+	});
+	
+	//Add online course header if there are online courses to add
+	if(education.onlineCourses.length > 0) {
+		$('#education').append(HTMLonlineClasses);
 	}
+
+	//Add each online course info
+	education.onlineCourses.forEach(function(course) {
+		//Starter HTML code for online courses
+		$('#education').append(HTMLschoolStart);
+
+		//Add online course info
+		//Course Title and School's Name
+		var formattedTitle = HTMLonlineTitle.replace('%data%', course.title);
+		var formattedSchool = HTMLonlineSchool.replace('%data%', course.school);
+		$('.education-entry:last').append(formattedTitle + formattedSchool);
+
+		//Date taken
+		var formattedDate = HTMLonlineDates.replace('%data%', course.date);
+		$('.education-entry:last').append(formattedDate);
+
+		//Url
+		var formattedUrl = HTMLonlineURL.replace('%data%', course.url);
+		$('.education-entry:last').append(formattedUrl);
+
+		//Add url to Title-Name and Url links
+		$('.education-entry:last').find('a').attr('href', course.url);
+	});
 };
 
 //Display all info
 bio.display();
+work.display();
 projects.display();
+education.display();
 
-
-
-//Add Work Experience
-displayWork();
-
-//Add international button
-$('#main').append(internationalizeButton);
-
+//Add Google Map
 $('#mapDiv').append(googleMap);
-
-function displayWork() {
-	work.jobs.forEach(function(job) {
-		$('#workExperience').append(HTMLworkStart);
-		var formattedWork = HTMLworkEmployer.replace('%data%', job.employer) +
-			HTMLworkTitle.replace('%data%', job.position) +
-			HTMLworkDates.replace('%data%', job.years) +
-			HTMLworkLocation.replace('%data%', job.location) +
-			HTMLworkDescription.replace('%data%', job.description);
-		$('.work-entry:last').append(formattedWork);
-	});
-}
-
-function inName(name) {
-	var names = name.trim().split(' ');
-	console.log(names);
-	var firstName = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
-	var lastName = names[1].toUpperCase();
-
-	return (firstName + ' ' + lastName);
-}
-
-/*
-//Name and Role Header
-var formattedName = HTMLheaderName.replace('%data%', bio.name);
-var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
-
-//Contact Info
-var formattedContact = '<ul>' + HTMLemail.replace('%data%', bio.contacts.email) + 
-	HTMLgithub.replace('%data%', bio.contacts.github) +
-	HTMLlocation.replace('%data%', bio.contacts.location) +
-	'</ul>';
-
-//Profile Pic
-var formattedPic = HTMLbioPic.replace('%data%', bio.photo);
-
-//Welcome Message
-var formattedWelcome = HTMLwelcomeMsg.replace('%data%', bio.message);
-
-//Skills
-var formattedSkills = '<ul>';
-bio.skills.forEach(function(skill) {
-	formattedSkills += HTMLskills.replace('%data%', skill);
-});
-formattedSkills += '</ul>';
-
-//Work Experience
-work.position = 'Web Developer';
-var formattedWork = HTMLworkStart +
-	HTMLworkEmployer +
-	HTMLworkTitle.replace('%data%', work.position) +
-	HTMLworkDates +
-	HTMLworkLocation +
-	HTMLworkDescription;
-
-//Education
-education['name'] = 'DeVry University';
-var formattedEducation = HTMLschoolStart +
-	HTMLschoolName.replace('%data%', education['name']) +
-	HTMLschoolDegree +
-	HTMLschoolDates +
-	HTMLschoolLocation +
-	HTMLschoolMajor;
-
-$('#header').prepend(formattedSkills);
-$('#header').prepend(HTMLskillsStart);
-$('#header').prepend(formattedWelcome);
-$('#header').prepend(formattedPic);
-$('#header').prepend(formattedContact);
-$('#header').prepend(formattedRole);
-$('#header').prepend(formattedName);
-
-$('#workExperience').append(formattedWork);
-$('#education').append(formattedEducation);
-*/

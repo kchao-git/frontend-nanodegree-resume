@@ -10,8 +10,12 @@ var bio = {
 		"location": "Santa Ana, CA"
 	},
 	"welcomeMessage": "Hello there!",
-	"skills": ["HTML", "CSS", "Javascript"],
-	"biopic": "images/fry.jpg",
+	"skills": [
+		"HTML",
+		"CSS",
+		"Javascript"
+	],
+	"biopic": "images/fry.jpg"
 };
 
 //Define bio object's display function
@@ -131,13 +135,19 @@ var projects = {
 			"title": "Sample",
 			"dates": "2015",
 			"description": "Sample Description",
-			"images": ['images/197x148.gif','images/197x148.gif']
+			"images": [
+				"images/197x148.gif",
+				"images/197x148.gif"
+			]
 		},
 		{
 			"title": "Sample",
 			"dates": "2015",
 			"description": "Sample Description",
-			"images": ['images/197x148.gif','images/197x148.gif']
+			"images": [
+				"images/197x148.gif",
+				"images/197x148.gif"
+			]
 		}
 	]
 };
@@ -172,7 +182,9 @@ var education = {
 			"name": "DeVry University",
 			"location": "Long Beach, CA",
 			"degree": "BS",
-			"majors": ["Game and Simulation Programming"],
+			"majors": [
+				"Game and Simulation Programming"
+			],
 			"dates": 2009,
 			"url": "http://www.devry.edu"
 		},
@@ -180,7 +192,10 @@ var education = {
 			"name": "Some other school",
 			"location": "Somewhere, CA",
 			"degree": "BS",
-			"majors": ["CS", "Some other major"],
+			"majors": [
+				"CS",
+				"Some other major"
+			],
 			"dates": 2015,
 			"url": "http://www.google.com"
 		}
